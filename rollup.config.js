@@ -1,6 +1,6 @@
 import babel from 'rollup-plugin-babel';
 import typescript2 from 'rollup-plugin-typescript2';
-import resolve from 'rollup-plugin-node-resolve';
+import resolve from '@rollup/plugin-node-resolve';
 import cleanup from 'rollup-plugin-cleanup';
 
 const extensions = ['.ts', '.js'];
