@@ -36,7 +36,6 @@
     "@microsoft/api-extractor": "7.7.10",
     "@rollup/plugin-node-resolve": "7.1.1",
     "@stryker-mutator/core": "3.0.2",
-    "@stryker-mutator/html-reporter": "3.0.2",
     "@stryker-mutator/jest-runner": "3.0.2",
     "@stryker-mutator/typescript": "3.0.2",
     "@types/jest": "25.1.4",
