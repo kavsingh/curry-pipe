@@ -1,4 +1,4 @@
-import { curry, pipe } from '.';
+import { curry, pipe, pipeFromArray } from '.';
 
 const clamp = curry((min: number, max: number, value: number) =>
   Math.min(max, Math.max(min, value)),
@@ -55,12 +55,12 @@ describe('examples', () => {
       expect(decimalToHex(300)).toBe('FF');
     });
 
-    const rgbToHex = pipe(
+    const rgbToHex = pipeFromArray([
       argsToArray<number, number, number>(),
       map(decimalToHex),
       unshift('#'),
       joinChars(''),
-    );
+    ]);
 
     it('Converts rgb array to hex', () => {
       expect(rgbToHex(0, 300, 255)).toBe('#00FFFF');
