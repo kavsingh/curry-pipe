@@ -1,6 +1,6 @@
 {
   "name": "@kavsingh/curry-pipe",
-  "version": "0.1.0-pubtest.1",
+  "version": "0.1.0",
   "description": "Curry and pipe",
   "repository": {
     "type": "git",
