@@ -1,5 +1,5 @@
 {
-  "name": "curry-pipe",
+  "name": "@kavsingh/curry-pipe",
   "version": "0.0.3",
   "description": "Curry and pipe",
   "repository": {
@@ -9,9 +9,6 @@
   "license": "MIT",
   "author": "Kav Singh <flakisms@gmail.com>",
   "contributors": [],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@kavsingh"
-  },
   "typings": "./lib/src/index.d.ts",
   "scripts": {
     "test": "jest",

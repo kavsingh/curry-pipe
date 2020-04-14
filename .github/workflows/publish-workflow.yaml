@@ -1,0 +1,32 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+          registry-url: https://registry.npmjs.org
+      - name: Install packages
+        run: npm i
+      - name: Run test
+        run: npm run test
+      - name: Build
+        run: npm run build
+      - name: Copy npmrc
+        run: cp ./.npmrc ./dist
+      - name: Deploy
+        working-directory: ./dist
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        run: npm publish --access public
