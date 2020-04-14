@@ -2,10 +2,23 @@
 
 Provides typed `curry` and `pipe` fns
 
-![CI status](https://github.com/kavsingh/curry-pipe/workflows/CI/badge.svg)
+![CI status](https://github.com/kavsingh/curry-pipe/workflows/Test/badge.svg)
 
-These are very naive, not perf optimised implementations. Best used when that's not a huge issue.
-It also does not support `lodash` / `ramda` style curry placeholders.
+---
+
+Have a toy typescript project where perf is not important?
+Don't want to install bigger, better libraries?
+Want curry and pipe functions without the hassle of typing them?
+
+Great!
+
+- Horribly naive, optimised for _absolutely nothing_, but super tiny implementations
+- Does not support `lodash` / `ramda` style curry placeholders
+- Anonymous functions everywhere
+
+Sold?
+
+`npm i @kavsingh/curry-pipe`
 
 Typings are lifted from [`@types/lodash`](https://www.npmjs.com/package/@types/lodash)
 
