@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export const pipe: Pipe = (fn: any, ...fns: any[]) => (...args: any[]) =>
+export const pipe: Pipe = (fn: any, ...fns: any[]) => (...args: any[]): any =>
   fns.reduce((result, currFn) => currFn(result), fn(...args));
 
 // Taken from @types/lodash
