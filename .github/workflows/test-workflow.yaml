@@ -15,5 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
       - run: npm i
       - run: npm run test:mutation
