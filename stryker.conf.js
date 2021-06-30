@@ -1,6 +1,5 @@
 module.exports = {
   mutate: ['src/**/*.ts', '!src/**/*@(.test|.spec|Spec).ts'],
-  mutator: 'typescript',
   testRunner: 'jest',
   reporters: ['progress', 'clear-text', 'html'],
   coverageAnalysis: 'off',
