@@ -1,40 +1,16 @@
 {
-  "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "baseUrl": "./",
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "lib": [
-      "esnext"
-    ],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noStrictGenericChecks": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "pretty": true,
-    "rootDir": "./",
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
-    "target": "esnext"
-  },
-  "exclude": [
-    "**/node_modules"
-  ],
-  "include": [
-    "./src",
-    "./scripts"
-  ]
+	"extends": "@tsconfig/node18-strictest/tsconfig.json",
+	"compilerOptions": {
+		"isolatedModules": true,
+		"lib": ["esnext"],
+		"module": "esnext",
+		"noEmit": true,
+		"paths": {
+			"~/*": ["./src/*"]
+		},
+		"sourceMap": true,
+		"target": "esnext"
+	},
+	"exclude": ["**/node_modules"],
+	"include": ["./src", "./*.ts"]
 }

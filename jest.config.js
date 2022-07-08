@@ -1,9 +1,8 @@
-module.exports = {
-  verbose: true,
-  testRegex: '^.+\\.test\\.[jt]s?$',
-  moduleDirectories: ['node_modules', 'src'],
-  moduleFileExtensions: ['ts', 'js', 'json'],
-  collectCoverageFrom: ['src/**/*.ts'],
-  coverageReporters: ['lcov'],
-  coveragePathIgnorePatterns: ['/node_modules/', '/dist/'],
+const config = {
+	transform: { "^.+\\.[jt]s$": "@swc/jest" },
+	testRegex: "^.+\\.test\\.[jt]s?$",
+	collectCoverageFrom: ["src/**/*"],
+	coveragePathIgnorePatterns: ["/__fixtures__/", "^types.ts$", "^.d.ts$"],
 };
+
+module.exports = config;
