@@ -1,4 +1,4 @@
-name: Test
+name: CI
 
 on:
   push:
@@ -9,8 +9,8 @@ on:
       - main
 
 jobs:
-  test:
-    name: Mutation tests
+  ci:
+    name: CI checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,5 +29,8 @@ jobs:
       - name: Install packages
         run: pnpm i
 
-      - name: Run mutation
+      - name: Run tests
         run: pnpm test:mutation
+
+      - name: Run lin
+        run: pnpm lint
