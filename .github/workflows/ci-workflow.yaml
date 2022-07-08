@@ -32,5 +32,32 @@ jobs:
       - name: Run tests
         run: pnpm test:mutation
 
-      - name: Run lin
+      - name: Run lint
         run: pnpm lint
+  
+  node-compat-tests:
+    name: Compat tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14, 16, 18]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          version: latest
+
+      - name: Install packages
+        run: pnpm i
+
+      - name: Run tests
+        run: pnpm test
