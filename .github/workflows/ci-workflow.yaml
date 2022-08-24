@@ -49,7 +49,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version-file: .nvmrc
+          node-version: ${{ matrix.node }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.2
