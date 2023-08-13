@@ -24,9 +24,5 @@
 		"allowUnreachableCode": true
 	},
 	"exclude": ["**/node_modules", "./coverage", "./reports", "./dist"],
-	"include": ["./src", "./*.ts"],
-	"ts-node": {
-		"esm": true,
-		"transpileOnly": true
-	}
+	"include": ["./src", "./*.ts"]
 }
