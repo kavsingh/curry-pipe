@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/consistent-type-definitions, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-explicit-any */
 
 export const pipe: Pipe =
 	(fn: any, ...fns: any[]) =>
@@ -49,12 +47,14 @@ interface Pipe {
 		f5: (a: R4) => R5,
 		f6: (a: R5) => R6,
 		f7: (a: R6) => R7,
-		...funcs: Array<(a: any) => any>
+		...funcs: ((a: any) => any)[]
 	): () => any;
 	<A1, R1, R2>(f1: (a1: A1) => R1, f2: (a: R1) => R2): (a1: A1) => R2;
-	<A1, R1, R2, R3>(f1: (a1: A1) => R1, f2: (a: R1) => R2, f3: (a: R2) => R3): (
-		a1: A1,
-	) => R3;
+	<A1, R1, R2, R3>(
+		f1: (a1: A1) => R1,
+		f2: (a: R1) => R2,
+		f3: (a: R2) => R3,
+	): (a1: A1) => R3;
 	<A1, R1, R2, R3, R4>(
 		f1: (a1: A1) => R1,
 		f2: (a: R1) => R2,
@@ -93,12 +93,12 @@ interface Pipe {
 		f5: (a: R4) => R5,
 		f6: (a: R5) => R6,
 		f7: (a: R6) => R7,
-		...funcs: Array<(a: any) => any>
+		...funcs: ((a: any) => any)[]
 	): (a1: A1) => any;
-	<A1, A2, R1, R2>(f1: (a1: A1, a2: A2) => R1, f2: (a: R1) => R2): (
-		a1: A1,
-		a2: A2,
-	) => R2;
+	<A1, A2, R1, R2>(
+		f1: (a1: A1, a2: A2) => R1,
+		f2: (a: R1) => R2,
+	): (a1: A1, a2: A2) => R2;
 	<A1, A2, R1, R2, R3>(
 		f1: (a1: A1, a2: A2) => R1,
 		f2: (a: R1) => R2,
@@ -142,13 +142,12 @@ interface Pipe {
 		f5: (a: R4) => R5,
 		f6: (a: R5) => R6,
 		f7: (a: R6) => R7,
-		...funcs: Array<(a: any) => any>
+		...funcs: ((a: any) => any)[]
 	): (a1: A1, a2: A2) => any;
-	<A1, A2, A3, R1, R2>(f1: (a1: A1, a2: A2, a3: A3) => R1, f2: (a: R1) => R2): (
-		a1: A1,
-		a2: A2,
-		a3: A3,
-	) => R2;
+	<A1, A2, A3, R1, R2>(
+		f1: (a1: A1, a2: A2, a3: A3) => R1,
+		f2: (a: R1) => R2,
+	): (a1: A1, a2: A2, a3: A3) => R2;
 	<A1, A2, A3, R1, R2, R3>(
 		f1: (a1: A1, a2: A2, a3: A3) => R1,
 		f2: (a: R1) => R2,
@@ -192,7 +191,7 @@ interface Pipe {
 		f5: (a: R4) => R5,
 		f6: (a: R5) => R6,
 		f7: (a: R6) => R7,
-		...funcs: Array<(a: any) => any>
+		...funcs: ((a: any) => any)[]
 	): (a1: A1, a2: A2, a3: A3) => any;
 	<A1, A2, A3, A4, R1, R2>(
 		f1: (a1: A1, a2: A2, a3: A3, a4: A4) => R1,
@@ -241,7 +240,7 @@ interface Pipe {
 		f5: (a: R4) => R5,
 		f6: (a: R5) => R6,
 		f7: (a: R6) => R7,
-		...funcs: Array<(a: any) => any>
+		...funcs: ((a: any) => any)[]
 	): (a1: A1, a2: A2, a3: A3, a4: A4) => any;
 	<A1, A2, A3, A4, R1, R2>(
 		f1: (a1: A1, a2: A2, a3: A3, a4: A4, ...args: any[]) => R1,
@@ -290,9 +289,9 @@ interface Pipe {
 		f5: (a: R4) => R5,
 		f6: (a: R5) => R6,
 		f7: (a: R6) => R7,
-		...funcs: Array<(a: any) => any>
+		...funcs: ((a: any) => any)[]
 	): (a1: A1, a2: A2, a3: A3, a4: A4, ...args: any[]) => any;
-	(funcs: Array<(...args: any[]) => any>): (...args: any[]) => any;
+	(funcs: ((...args: any[]) => any)[]): (...args: any[]) => any;
 }
 
 /* eslint-enable */

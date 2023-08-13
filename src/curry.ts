@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/consistent-type-definitions, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any */
 
 export const curry: Curry =
 	(fn: (...args: any[]) => any) =>
@@ -10,12 +9,9 @@ export const curry: Curry =
 interface Curry {
 	<T1, R>(func: (t1: T1) => R): CurriedFunction1<T1, R>;
 	<T1, T2, R>(func: (t1: T1, t2: T2) => R): CurriedFunction2<T1, T2, R>;
-	<T1, T2, T3, R>(func: (t1: T1, t2: T2, t3: T3) => R): CurriedFunction3<
-		T1,
-		T2,
-		T3,
-		R
-	>;
+	<T1, T2, T3, R>(
+		func: (t1: T1, t2: T2, t3: T3) => R,
+	): CurriedFunction3<T1, T2, T3, R>;
 	<T1, T2, T3, T4, R>(
 		func: (t1: T1, t2: T2, t3: T3, t4: T4) => R,
 	): CurriedFunction4<T1, T2, T3, T4, R>;
