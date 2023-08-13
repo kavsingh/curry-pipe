@@ -1,14 +1,15 @@
-import test from "ava";
+import { test } from "node:test";
+import assert from "node:assert";
 
 import { curry } from "./curry.js";
 
-test("curry", (t) => {
+void test("curry", () => {
 	const add = curry((a: number, b: number) => a + b);
 	const add2 = add(2);
 
-	t.is(add(1, 2), 3);
-	t.is(add(1)(2), 3);
-	t.is(add()(1, 2), 3);
-	t.is(add()()(1)()(2), 3);
-	t.is(add2()(2), 4);
+	assert.strictEqual(add(1, 2), 3);
+	assert.strictEqual(add(1)(2), 3);
+	assert.strictEqual(add()(1, 2), 3);
+	assert.strictEqual(add()()(1)()(2), 3);
+	assert.strictEqual(add2()(2), 4);
 });

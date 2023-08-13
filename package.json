@@ -32,7 +32,7 @@
 		}
 	},
 	"scripts": {
-		"test": "NODE_OPTIONS='--loader=tsx' ava",
+		"test": "glob -c 'node --loader=tsx --test' './src/**/*.test.ts'",
 		"test:mutation": "stryker run",
 		"lint": "tsc && eslint .",
 		"build": "tsup"
@@ -40,25 +40,21 @@
 	"devDependencies": {
 		"@stryker-mutator/core": "7.1.1",
 		"@tsconfig/node20": "20.1.1",
+		"@tsconfig/strictest": "2.0.1",
 		"@types/eslint": "8.44.2",
 		"@types/node": "20.4.10",
 		"@typescript-eslint/eslint-plugin": "6.3.0",
 		"@typescript-eslint/parser": "6.3.0",
-		"ava": "5.3.1",
 		"eslint": "8.47.0",
 		"eslint-config-prettier": "9.0.0",
 		"eslint-plugin-deprecation": "1.5.0",
 		"eslint-plugin-filenames": "1.3.2",
 		"eslint-plugin-prettier": "5.0.0",
 		"eslint-plugin-tsdoc": "0.2.17",
+		"glob": "10.3.3",
 		"prettier": "3.0.1",
 		"tsup": "7.2.0",
 		"tsx": "3.12.7",
 		"typescript": "5.1.6"
-	},
-	"ava": {
-		"extensions": {
-			"ts": "module"
-		}
 	}
 }

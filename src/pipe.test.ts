@@ -1,11 +1,12 @@
-import test from "ava";
+import { test } from "node:test";
+import assert from "node:assert";
 
 import { pipe } from "./pipe.js";
 
-test("pipe", (t) => {
+void test("pipe", () => {
 	const add = (a: number, b: number) => a + b;
 	const double = (x: number) => x * 2;
 	const addThenDouble = pipe(add, double);
 
-	t.is(addThenDouble(1, 2), 6);
+	assert.strictEqual(addThenDouble(1, 2), 6);
 });
