@@ -1,13 +1,8 @@
 {
 	"extends": "@tsconfig/node20/tsconfig.json",
 	"compilerOptions": {
-		"isolatedModules": true,
-		"lib": ["esnext"],
-		"module": "esnext",
 		"noEmit": true,
-		"paths": { "~/*": ["./src/*"] },
 		"sourceMap": true,
-		"target": "esnext",
 
 		// latest ts-node release does not support extends array
 		// manually add strictect config here
@@ -31,13 +26,7 @@
 	"exclude": ["**/node_modules", "./coverage", "./reports", "./dist"],
 	"include": ["./src", "./*.ts"],
 	"ts-node": {
-		"transpileOnly": true,
-		"compilerOptions": {
-			"isolatedModules": false,
-			"module": "commonjs",
-			"target": "es2020",
-			"lib": ["es2020"],
-			"types": ["node"]
-		}
+		"esm": true,
+		"transpileOnly": true
 	}
 }

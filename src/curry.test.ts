@@ -1,14 +1,14 @@
-import { curry } from "./curry";
+import test from "ava";
 
-describe("curry", () => {
-	it("Curries a function", () => {
-		const add = curry((a: number, b: number) => a + b);
-		const add2 = add(2);
+import { curry } from "./curry.js";
 
-		expect(add(1, 2)).toBe(3);
-		expect(add(1)(2)).toBe(3);
-		expect(add()(1, 2)).toBe(3);
-		expect(add()()(1)()(2)).toBe(3);
-		expect(add2()(2)).toBe(4);
-	});
+test("curry", (t) => {
+	const add = curry((a: number, b: number) => a + b);
+	const add2 = add(2);
+
+	t.is(add(1, 2), 3);
+	t.is(add(1)(2), 3);
+	t.is(add()(1, 2), 3);
+	t.is(add()()(1)()(2), 3);
+	t.is(add2()(2), 4);
 });

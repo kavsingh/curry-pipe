@@ -1,12 +1,13 @@
-/* eslint-disable @typescript-eslint/consistent-type-definitions, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-explicit-any */
 
-export const pipe: Pipe =
-	(fn: any, ...fns: any[]) =>
-	(...args: any[]): any =>
-		fns.reduce((result, currFn) => currFn(result), fn(...args));
+export const pipe: Pipe = (fn: any, ...fns: any[]) => {
+	return function pipeReduce(...args: any[]): any {
+		return fns.reduce((result, currFn) => currFn(result), fn(...args));
+	};
+};
 
 // Taken from @types/lodash
-interface Pipe {
+type Pipe = {
 	<R1, R2>(f1: () => R1, f2: (a: R1) => R2): () => R2;
 	<R1, R2, R3>(f1: () => R1, f2: (a: R1) => R2, f3: (a: R2) => R3): () => R3;
 	<R1, R2, R3, R4>(
@@ -292,6 +293,4 @@ interface Pipe {
 		...funcs: ((a: any) => any)[]
 	): (a1: A1, a2: A2, a3: A3, a4: A4, ...args: any[]) => any;
 	(funcs: ((...args: any[]) => any)[]): (...args: any[]) => any;
-}
-
-/* eslint-enable */
+};

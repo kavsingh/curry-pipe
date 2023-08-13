@@ -1,5 +1,4 @@
 /** @type {import("path")} */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path");
 
 const testFileSuffixes = ["test", "spec", "mock"];
@@ -18,7 +17,7 @@ module.exports = {
 	reportUnusedDisableDirectives: true,
 	env: { es2022: true, node: true, browser: false },
 	parser: "@typescript-eslint/parser",
-	parserOptions: { project: "./tsconfig.json" },
+	parserOptions: { project: "./tsconfig.json", sourceType: "module" },
 	plugins: ["filenames", "deprecation"],
 	extends: [
 		"eslint:recommended",
@@ -73,18 +72,22 @@ module.exports = {
 			rules: { "deprecation/deprecation": "off" },
 		},
 		{
+			files: ["*.?(c)ts"],
+			plugins: ["tsdoc"],
+			rules: { "tsdoc/syntax": "warn" },
+		},
+		{
 			files: ["./*"],
 			rules: { "filenames/match-exported": "off" },
 		},
 		{
 			files: ["src/**/*"],
-			env: { node: false, browser: true },
+			env: { node: false, browser: false },
 			rules: { "no-console": "error" },
 		},
 		{
 			files: testFilePatterns(),
 			env: { node: true },
-			extends: ["plugin:jest/recommended", "plugin:jest/style"],
 			rules: {
 				"no-console": "off",
 				"filenames/match-exported": [
