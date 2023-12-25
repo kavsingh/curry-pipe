@@ -1,16 +1,3 @@
-/** @type {import("path")} */
-const path = require("path");
-
-const testFileSuffixes = ["test", "spec", "mock"];
-
-function testFilePatterns({ root = "", extensions = "*" } = {}) {
-	return [
-		`*.{${testFileSuffixes.join(",")}}`,
-		"__{test,tests,mocks,fixtures}__/**/*",
-		"__{test,mock,fixture}-*__/**/*",
-	].map((pattern) => path.join(root, `**/${pattern}.${extensions}`));
-}
-
 /** @type {import("eslint").ESLint.ConfigData} */
 module.exports = {
 	root: true,
@@ -86,20 +73,15 @@ module.exports = {
 			rules: { "no-console": "error" },
 		},
 		{
-			files: testFilePatterns(),
+			files: [
+				`**/*.{test,spec,mock}.*`,
+				"**/__{test,tests,mocks,fixtures}__/**/*.*",
+				"**/__{test,mock,fixture}-*__/**/*.*",
+			],
 			env: { node: true },
 			rules: {
 				"no-console": "off",
-				"filenames/match-exported": [
-					"error",
-					"kebab",
-					`\\.(${testFileSuffixes.join("|")})$`,
-				],
-			},
-		},
-		{
-			files: testFilePatterns({ extensions: "ts" }),
-			rules: {
+				"filenames/match-exported": ["error", "kebab", `\\.(test|spec|mock)$`],
 				"@typescript-eslint/no-explicit-any": "off",
 				"@typescript-eslint/no-non-null-assertion": "off",
 				"@typescript-eslint/no-unsafe-argument": "off",
