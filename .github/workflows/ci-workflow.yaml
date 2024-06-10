@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - main
+  workflow_call:
 
 jobs:
   ci:
@@ -16,15 +17,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Enable corepack
+        run: corepack enable pnpm
+
       - name: Setup node
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
+          cache: pnpm
 
       - name: Install packages
         run: pnpm i --frozen-lockfile
@@ -34,27 +34,24 @@ jobs:
 
       - name: Run lint
         run: pnpm lint
-  
+
   node-compat-tests:
     name: Compat tests
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        node: [18, 20, 21]
+        node: [18, 19, 20, 21, 22]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Enable corepack
+        run: corepack enable pnpm
 
       - name: Setup node
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
 
       - name: Install packages
         run: pnpm i --frozen-lockfile

@@ -4,12 +4,19 @@ on:
   workflow_dispatch:
 
 jobs:
+  verify:
+    uses: ./.github/workflows/ci-workflow.yaml
+
   publish:
     name: Publish
+    needs: verify
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Enable corepack
+        run: corepack enable pnpm
 
       - name: Setup node
         uses: actions/setup-node@v4
@@ -17,16 +24,8 @@ jobs:
           node-version-file: .nvmrc
           registry-url: https://registry.npmjs.org
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
-
       - name: Install packages
         run: pnpm i --frozen-lockfile
-
-      - name: Run test
-        run: pnpm t
 
       - name: Build
         run: pnpm build
