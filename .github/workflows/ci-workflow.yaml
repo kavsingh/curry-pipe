@@ -36,6 +36,7 @@ jobs:
         run: pnpm lint
 
   node-compat-tests:
+    needs: ci
     name: Compat tests
     runs-on: ubuntu-latest
     strategy:

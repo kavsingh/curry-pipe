@@ -13,7 +13,7 @@
 	"engines": {
 		"node": ">=18.0.0"
 	},
-	"packageManager": "pnpm@9.3.0+sha512.ee7b93e0c2bd11409c6424f92b866f31d3ea1bef5fbe47d3c7500cdc3c9668833d2e55681ad66df5b640c61fa9dc25d546efa54d76d7f8bf54b13614ac293631",
+	"packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e",
 	"main": "./dist/index.cjs",
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -44,19 +44,19 @@
 		"@tsconfig/node20": "20.1.4",
 		"@tsconfig/strictest": "2.0.5",
 		"@types/eslint": "8.56.10",
-		"@types/node": "20.14.2",
-		"@typescript-eslint/eslint-plugin": "7.13.0",
-		"@typescript-eslint/parser": "7.13.0",
+		"@types/node": "20.14.12",
+		"@typescript-eslint/eslint-plugin": "7.17.0",
+		"@typescript-eslint/parser": "7.17.0",
 		"eslint": "8.57.0",
 		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-deprecation": "3.0.0",
 		"eslint-plugin-filenames": "1.3.2",
-		"eslint-plugin-prettier": "5.1.3",
+		"eslint-plugin-prettier": "5.2.1",
 		"eslint-plugin-tsdoc": "0.3.0",
-		"glob": "10.4.1",
-		"prettier": "3.3.1",
-		"tsup": "8.1.0",
-		"tsx": "4.15.1",
-		"typescript": "5.4.5"
+		"glob": "11.0.0",
+		"prettier": "3.3.3",
+		"tsup": "8.2.3",
+		"tsx": "4.16.2",
+		"typescript": "5.5.4"
 	}
 }
