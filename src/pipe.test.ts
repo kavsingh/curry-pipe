@@ -1,12 +1,15 @@
-import { test } from "node:test";
-import assert from "node:assert";
+import { describe, it, expect } from "vitest";
 
 import { pipe } from "./pipe.js";
 
-void test("pipe", () => {
-	const add = (a: number, b: number) => a + b;
-	const double = (x: number) => x * 2;
-	const addThenDouble = pipe(add, double);
+describe("pipe", () => {
+	it("should provide a function pipeline", () => {
+		expect.assertions(1);
 
-	assert.strictEqual(addThenDouble(1, 2), 6);
+		const add = (a: number, b: number) => a + b;
+		const double = (x: number) => x * 2;
+		const addThenDouble = pipe(add, double);
+
+		expect(addThenDouble(1, 2)).toBe(6);
+	});
 });

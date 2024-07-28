@@ -1,15 +1,18 @@
-import { test } from "node:test";
-import assert from "node:assert";
+import { describe, it, expect } from "vitest";
 
 import { curry } from "./curry.js";
 
-void test("curry", () => {
-	const add = curry((a: number, b: number) => a + b);
-	const add2 = add(2);
+describe("curry", () => {
+	it("should provide a curried function", () => {
+		expect.assertions(5);
 
-	assert.strictEqual(add(1, 2), 3);
-	assert.strictEqual(add(1)(2), 3);
-	assert.strictEqual(add()(1, 2), 3);
-	assert.strictEqual(add()()(1)()(2), 3);
-	assert.strictEqual(add2()(2), 4);
+		const add = curry((a: number, b: number) => a + b);
+		const add2 = add(2);
+
+		expect(add(1, 2)).toBe(3);
+		expect(add(1)(2)).toBe(3);
+		expect(add()(1, 2)).toBe(3);
+		expect(add()()(1)()(2)).toBe(3);
+		expect(add2()(2)).toBe(4);
+	});
 });

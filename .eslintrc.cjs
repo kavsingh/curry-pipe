@@ -1,3 +1,5 @@
+const vitest = require("eslint-plugin-vitest");
+
 /** @type {import("eslint").ESLint.ConfigData} */
 module.exports = {
 	root: true,
@@ -77,8 +79,10 @@ module.exports = {
 				`**/*.{test,spec,mock}.*`,
 				"**/__{test,tests,mocks,fixtures}__/**/*.*",
 				"**/__{test,mock,fixture}-*__/**/*.*",
+				`**/*.test-d.ts`,
 			],
 			env: { node: true },
+			plugins: ["vitest"],
 			rules: {
 				"no-console": "off",
 				"filenames/match-exported": ["error", "kebab", `\\.(test|spec|mock)$`],
@@ -90,6 +94,9 @@ module.exports = {
 				"@typescript-eslint/no-unsafe-member-access": "off",
 				"@typescript-eslint/no-unsafe-return": "off",
 				"@typescript-eslint/unbound-method": "off",
+				// @ts-expect-error type import mismatch
+				...vitest.configs.all.rules,
+				"vitest/no-hooks": "off",
 			},
 		},
 	],

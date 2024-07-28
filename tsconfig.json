@@ -14,5 +14,5 @@
 		"allowUnreachableCode": true
 	},
 	"exclude": ["**/node_modules", "./coverage", "./reports", "./dist"],
-	"include": ["./src", "./*.ts"]
+	"include": ["./src", "./*.ts", "./*.cjs", "./.*.cjs"]
 }
