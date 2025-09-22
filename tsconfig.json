@@ -1,18 +1,20 @@
 {
 	"extends": [
-		"@tsconfig/node20/tsconfig.json",
-		"@tsconfig/strictest/tsconfig.json"
+		"@tsconfig/strictest/tsconfig.json",
+		"@tsconfig/node24/tsconfig.json"
 	],
 	"compilerOptions": {
+		"allowImportingTsExtensions": true,
 		"allowJs": true,
 		"checkJs": true,
+		"erasableSyntaxOnly": true,
 		"noEmit": true,
 		"sourceMap": true,
+		"verbatimModuleSyntax": true,
 		// leave the following to eslint
 		"noUnusedLocals": false,
 		"noUnusedParameters": false,
 		"allowUnreachableCode": true
 	},
-	"exclude": ["**/node_modules", "./coverage", "./reports", "./dist"],
-	"include": ["./src", "./*.ts", "./*.cjs", "./.*.cjs"]
+	"include": ["src", "./*.ts", "./*.js"]
 }

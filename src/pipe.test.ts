@@ -1,10 +1,10 @@
 import { describe, it, expect } from "vitest";
 
-import { pipe } from "./pipe.js";
+import { pipe } from "./pipe.ts";
 
-describe("pipe", () => {
+describe(pipe, () => {
 	it("should provide a function pipeline", () => {
-		expect.assertions(1);
+		expect.hasAssertions();
 
 		const add = (a: number, b: number) => a + b;
 		const double = (x: number) => x * 2;

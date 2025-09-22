@@ -1,5 +1,4 @@
-/** @type {import('@stryker-mutator/api/core').PartialStrykerOptions} */
-const config = {
+export default {
 	mutate: [
 		"src/**/*.ts",
 		"!src/**/*@(.test|.spec|.mock).ts",
@@ -12,5 +11,3 @@ const config = {
 	// avoid warnings about checking html
 	disableTypeChecks: false,
 };
-
-export default config;

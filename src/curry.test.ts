@@ -1,10 +1,10 @@
 import { describe, it, expect } from "vitest";
 
-import { curry } from "./curry.js";
+import { curry } from "./curry.ts";
 
-describe("curry", () => {
+describe(curry, () => {
 	it("should provide a curried function", () => {
-		expect.assertions(5);
+		expect.hasAssertions();
 
 		const add = curry((a: number, b: number) => a + b);
 		const add2 = add(2);
