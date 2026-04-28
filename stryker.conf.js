@@ -1,9 +1,8 @@
+/**
+ * @type {import('@stryker-mutator/api/core').PartialStrykerOptions}
+ */
 export default {
-	mutate: [
-		"src/**/*.ts",
-		"!src/**/*@(.test|.spec|.mock).ts",
-		"!src/**/*.test-d.ts",
-	],
+	mutate: ["src/**/*.ts", "!src/**/*.test.ts", "!src/**/*.test-d.ts"],
 	testRunner: "command",
 	commandRunner: { command: "pnpm vitest run" },
 	reporters: ["progress", "clear-text", "html"],

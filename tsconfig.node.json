@@ -1,6 +1,6 @@
 {
 	"extends": ["./tsconfig.base.json", "@tsconfig/node24/tsconfig.json"],
-	"include": ["./*.ts"],
+	"include": ["./*.ts", "./*.js"],
 	"compilerOptions": {
 		"composite": true,
 		"allowJs": true,

@@ -1,13 +1,17 @@
-// oxlint-disable typescript/no-unnecessary-type-parameters
+// oxlint-disable typescript/no-unnecessary-type-parameters, typescript/no-explicit-any
 
 export const pipe: Pipe = (fn: any, ...fns: any[]) => {
-	return function pipeReduce(...args: any[]): any {
-		return fns.reduce((result, currFn) => currFn(result), fn(...args));
+	return function pipeEntry(...args: any[]): any {
+		let result: any = fn(...args);
+
+		for (const currFn of fns) result = currFn(result);
+
+		return result;
 	};
 };
 
 // Taken from @types/lodash
-type Pipe = {
+export type Pipe = {
 	<R1, R2>(f1: () => R1, f2: (a: R1) => R2): () => R2;
 	<R1, R2, R3>(f1: () => R1, f2: (a: R1) => R2, f3: (a: R2) => R3): () => R3;
 	<R1, R2, R3, R4>(

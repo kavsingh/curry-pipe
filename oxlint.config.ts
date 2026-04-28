@@ -16,7 +16,10 @@ export default defineConfig({
 	rules: {
 		"eslint/curly": ["error", "multi-line", "consistent"],
 		"eslint/eqeqeq": "error",
+		"eslint/no-use-before-define": "error",
+		"typescript/no-explicit-any": "error",
 		"import/no-cycle": "error",
+		"import/exports-last": "error",
 		"unicorn/filename-case": ["error", { cases: { kebabCase: true } }],
 
 		...security.configs.recommended.rules,
