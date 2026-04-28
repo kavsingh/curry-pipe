@@ -1,20 +1,8 @@
 {
-	"extends": [
-		"@tsconfig/strictest/tsconfig.json",
-		"@tsconfig/node24/tsconfig.json"
-	],
-	"compilerOptions": {
-		"allowImportingTsExtensions": true,
-		"allowJs": true,
-		"checkJs": true,
-		"erasableSyntaxOnly": true,
-		"noEmit": true,
-		"sourceMap": true,
-		"verbatimModuleSyntax": true,
-		// leave the following to eslint
-		"noUnusedLocals": false,
-		"noUnusedParameters": false,
-		"allowUnreachableCode": true
-	},
-	"include": ["src", "./*.ts", "./*.js"]
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"include": [],
+	"references": [
+		{ "path": "./tsconfig.node.json" },
+		{ "path": "./tsconfig.src.json" }
+	]
 }

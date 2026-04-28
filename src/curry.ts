@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/consistent-type-definitions */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-
 export const curry: Curry = (fn: (...args: any[]) => any) => {
 	return function curried(...args: any[]): any {
 		return args.length >= fn.length

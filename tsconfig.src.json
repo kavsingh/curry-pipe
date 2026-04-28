@@ -1,0 +1,8 @@
+{
+	"extends": ["./tsconfig.base.json", "@tsconfig/node24/tsconfig.json"],
+	"include": ["src"],
+	"compilerOptions": {
+		"composite": true,
+		"types": []
+	}
+}

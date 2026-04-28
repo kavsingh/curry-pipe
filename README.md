@@ -27,7 +27,7 @@ Typings are lifted from [`@types/lodash`](https://www.npmjs.com/package/@types/l
 Here is the classic simple scenario
 
 ```ts
-import { curry, pipe } from '@kavsingh/curry-pipe';
+import { curry, pipe } from "@kavsingh/curry-pipe";
 
 const add = curry((x: number, y: number) => x + y);
 const multiply = curry((x: number, y: number) => x * y);
@@ -41,15 +41,15 @@ plus2Times3(3); // 15
 Dealing with generics needs a BYO signature overload (same with lodash afaik)
 
 ```ts
-import { curry, pipe } from '@kavsingh/curry-pipe';
+import { curry, pipe } from "@kavsingh/curry-pipe";
 
 const takeN: {
-  (n: number): <X>(xs: X[]) => X[];
-  <X>(n: number, xs: X[]): X[];
+	(n: number): <X>(xs: X[]) => X[];
+	<X>(n: number, xs: X[]): X[];
 } = curry((n: number, xs: any[]) => xs.slice(0, n));
 
 const range = curry((min: number, max: number) =>
-  Array.from({ length: max - min }, (_, i) => i + min),
+	Array.from({ length: max - min }, (_, i) => i + min),
 );
 
 // infers (x: number) => number[]

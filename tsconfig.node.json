@@ -1,0 +1,10 @@
+{
+	"extends": ["./tsconfig.base.json", "@tsconfig/node24/tsconfig.json"],
+	"include": ["./*.ts"],
+	"compilerOptions": {
+		"composite": true,
+		"allowJs": true,
+		"checkJs": true,
+		"types": ["node"]
+	}
+}

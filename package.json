@@ -2,24 +2,20 @@
 	"name": "@kavsingh/curry-pipe",
 	"version": "0.4.0",
 	"description": "Curry and pipe",
+	"license": "MIT",
+	"author": "Kav Singh <flakisms@gmail.com>",
+	"contributors": [],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/kavsingh/curry-pipe.git"
 	},
-	"license": "MIT",
-	"author": "Kav Singh <flakisms@gmail.com>",
-	"contributors": [],
-	"type": "module",
-	"engines": {
-		"node": ">=20.0.0"
-	},
-	"packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a",
-	"main": "./dist/index.cjs",
-	"module": "./dist/index.js",
-	"types": "./dist/index.d.ts",
 	"files": [
 		"dist/**/*"
 	],
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
 			"import": {
@@ -35,33 +31,27 @@
 	"scripts": {
 		"test": "vitest run --typecheck --coverage",
 		"test:mutation": "stryker run",
-		"lint": "tsc && eslint .",
+		"lint": "oxlint && oxfmt --check",
 		"build": "tsdown"
 	},
 	"devDependencies": {
-		"@eslint/js": "9.36.0",
-		"@kavsingh/eslint-plugin-filenames": "2.0.0-rc.2",
-		"@stryker-mutator/core": "9.1.1",
-		"@tsconfig/node24": "24.0.1",
-		"@tsconfig/strictest": "2.0.5",
-		"@types/eslint": "9.6.1",
-		"@types/eslint-plugin-security": "3.0.0",
-		"@types/node": "24.5.2",
-		"@vitest/coverage-v8": "3.2.4",
-		"@vitest/eslint-plugin": "1.3.12",
-		"eslint": "9.36.0",
-		"eslint-config-prettier": "10.1.8",
-		"eslint-import-resolver-typescript": "4.4.4",
-		"eslint-plugin-compat": "6.0.2",
-		"eslint-plugin-import-x": "4.16.1",
-		"eslint-plugin-n": "17.23.1",
-		"eslint-plugin-prettier": "5.5.4",
-		"eslint-plugin-security": "3.0.1",
-		"globals": "16.4.0",
-		"prettier": "3.6.2",
-		"tsdown": "0.15.4",
-		"typescript": "5.9.2",
-		"typescript-eslint": "8.44.1",
-		"vitest": "3.2.4"
-	}
+		"@stryker-mutator/core": "9.6.1",
+		"@tsconfig/node24": "24.0.4",
+		"@tsconfig/strictest": "2.0.8",
+		"@types/eslint-plugin-security": "3.0.1",
+		"@types/node": "24.12.2",
+		"@typescript/native-preview": "7.0.0-dev.20260425.1",
+		"@vitest/coverage-v8": "4.1.5",
+		"eslint-plugin-security": "4.0.0",
+		"oxfmt": "0.46.0",
+		"oxlint": "1.61.0",
+		"oxlint-tsgolint": "0.22.0",
+		"tsdown": "0.21.10",
+		"typescript": "6.0.3",
+		"vitest": "4.1.5"
+	},
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"packageManager": "pnpm@10.33.2+sha512.a90faf6feeab71ad6c6e57f94e0fe1a12f5dcc22cd754db40ae9593eb6a3e0b6b12e3540218bb37ae083404b1f2ce6db2a4121e979829b4aff94b99f49da1cf8"
 }

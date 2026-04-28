@@ -14,26 +14,15 @@ jobs:
     name: CI checks
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Enable corepack
-        run: corepack enable pnpm
-
-      - name: Setup node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v5
+      - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
           cache: pnpm
-
-      - name: Install packages
-        run: pnpm i --frozen-lockfile
-
-      - name: Run tests
-        run: pnpm test:mutation
-
-      - name: Run lint
-        run: pnpm lint
+      - run: pnpm i --frozen-lockfile
+      - run: pnpm test:mutation
+      - run: pnpm lint
 
   node-compat-tests:
     needs: ci
@@ -43,19 +32,10 @@ jobs:
       matrix:
         node: [20, 22, 24]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Enable corepack
-        run: corepack enable pnpm
-
-      - name: Setup node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node }}
-
-      - name: Install packages
-        run: pnpm i --frozen-lockfile
-
-      - name: Run tests
-        run: pnpm t
+      - run: pnpm i --frozen-lockfile
+      - run: pnpm t
