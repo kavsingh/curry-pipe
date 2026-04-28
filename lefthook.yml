@@ -1,13 +1,13 @@
 pre-commit:
   jobs:
-    - run: bun oxfmt {staged_files}
+    - run: pnpm oxfmt {staged_files}
       glob: "**/*.{ts,js,json,jsonc,toml,yaml,yml}"
       stage_fixed: true
-    - run: bun oxlint --fix {staged_files}
+    - run: pnpm oxlint --fix {staged_files}
       glob: "**/*.{ts,js}"
 
 pre-push:
   parallel: true
   jobs:
-    - run: bun lint
+    - run: pnpm lint
       glob: "**/*.*"
