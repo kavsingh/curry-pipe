@@ -5,6 +5,7 @@ pre-commit:
       stage_fixed: true
     - run: pnpm oxlint --fix {staged_files}
       glob: "**/*.{ts,js}"
+      stage_fixed: true
 
 pre-push:
   parallel: true
