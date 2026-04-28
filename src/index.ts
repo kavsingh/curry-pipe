@@ -1,2 +1,2 @@
-export { curry } from "./curry.ts";
-export { pipe } from "./pipe.ts";
+export * from "./curry.ts";
+export * from "./pipe.ts";

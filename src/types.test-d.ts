@@ -3,27 +3,34 @@ import { describe, it, expect, expectTypeOf } from "vitest";
 import { curry } from "./curry.ts";
 import { pipe } from "./pipe.ts";
 
+import type { CurriedFunction1, CurriedFunction2 } from "./curry.ts";
+
 describe("type inference", () => {
 	it("should provide correct types for curry", () => {
-		expect.assertions(5);
+		expect.hasAssertions();
 
 		const tag = curry((t: string, n: number) => `${t}${String(n)}`);
 
-		// @ts-expect-error @todo: fix type test
-		expectTypeOf(tag()).parameters.toEqualTypeOf<[string, number]>();
-		// @ts-expect-error @todo: fix type test
-		expectTypeOf(tag()).returns.toBeString();
+		expectTypeOf(tag()).parameters.toEqualTypeOf<
+			[] | [string] | [string, number]
+		>();
+		expectTypeOf(tag()).returns.toEqualTypeOf<
+			| string
+			| CurriedFunction1<number, string>
+			| CurriedFunction2<string, number, string>
+		>();
 
-		// @ts-expect-error @todo: fix type test
-		expectTypeOf(tag("tag")).parameters.toEqualTypeOf<[number]>();
-		// @ts-expect-error @todo: fix type test
-		expectTypeOf(tag("tag")).returns.toBeString();
+		expectTypeOf(tag("tag")).parameters.toEqualTypeOf<[] | [number]>();
+		expectTypeOf(tag("tag")).returns.toEqualTypeOf<
+			string | CurriedFunction1<number, string>
+		>();
 
+		expectTypeOf(tag()).toBeFunction();
 		expectTypeOf(tag("tag", 5)).toBeString();
 	});
 
 	it("should provide correct types for pipe", () => {
-		expect.assertions(2);
+		expect.hasAssertions();
 
 		const fn = pipe(
 			(s: string) => Number(s),
@@ -35,7 +42,7 @@ describe("type inference", () => {
 	});
 
 	it("should maintain types for pipe and curry", () => {
-		expect.assertions(4);
+		expect.hasAssertions();
 
 		const tag = curry((t: string, n: number) => `${t}${String(n)}`);
 		const fn = pipe(tag("tag"), (s: string) => ({ tagged: s }));
@@ -50,9 +57,9 @@ describe("type inference", () => {
 			),
 		);
 
-		// @ts-expect-error @todo: fix type test
-		expectTypeOf(fn2("tag")).parameters.toEqualTypeOf<[number]>();
-		// @ts-expect-error @todo: fix type test
-		expectTypeOf(fn2("tag")).returns.toEqualTypeOf<{ tagged: string }>();
+		expectTypeOf(fn2("tag")).parameters.toEqualTypeOf<[] | [number]>();
+		expectTypeOf(fn2("tag")).returns.toEqualTypeOf<
+			{ tagged: string } | CurriedFunction1<number, { tagged: string }>
+		>();
 	});
 });
